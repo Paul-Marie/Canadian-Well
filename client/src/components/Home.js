@@ -47,7 +47,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => setTime(Date.now()), 5000);
+    const interval = setInterval(() => setTime(Date.now()), 60000);
     return () => {
       clearInterval(interval);
     };

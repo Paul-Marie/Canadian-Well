@@ -1,4 +1,4 @@
-const serverUrl = "http://127.0.0.1:3001";
+const serverUrl = "http://146.59.239.192:3001";
 
 const fetcher = (method) => (
   async (url, payload, type = "application/json;charset=UTF-8") => {
