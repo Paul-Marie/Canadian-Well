@@ -20,12 +20,13 @@ const Menu = () => {
       <div className="overlay" style={overlayStyle} />
       <div className="menu" style={menuStyle}>
         <div className="menu__row">
-          <img
-            className="menu--logo"
-            src="/logo.png"
-            alt="user"
-            onClick={openMenu}
-          />
+          <a href="http://localhost:3001/temperatures">
+            <img
+              className="menu--logo"
+              src="/logo.png"
+              alt="puit"
+            />
+          </a>
         </div>
       </div>
       <div className="menu-mobile">

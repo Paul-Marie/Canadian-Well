@@ -64,14 +64,16 @@ const Home = () => {
     <>
       <div className="title">
         <div className="title--text">
-          Puits Canadien Meximieux
+          Puits Canadien de Meximieux
         </div>
       </div>
       <div className="current-time">
         {(current) ? (
           <div className="current-time__container">
-            {current.data[0].sensors.map((elem) => (
-              <div className="current-time-container__item">
+            {current.data[0].sensors.map((elem, key) => (
+              <div
+                className="current-time-container__item"
+                key={key}>
                 <div className="current-time-container__item--title">
                   Sonde {elem.id}
                 </div>
