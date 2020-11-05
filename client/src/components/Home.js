@@ -8,6 +8,7 @@ import "../styles/Home.css";
 const Home = () => {
   const [current, updateCurrent] = useState(undefined);
   const [data, setData] = useState(undefined);
+  const [time, setTime] = useState(Date.now());
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -46,12 +47,18 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    const interval = setInterval(() => setTime(Date.now()), 5000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  useEffect(() => {
     (async () => {
       const result = await fetchCurrentTemperature();
-      console.log(result);
       updateCurrent(result);
     })();
-  }, [data]);
+  }, [time]);
 
   return (
     <>
