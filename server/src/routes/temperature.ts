@@ -12,16 +12,16 @@ router.param(
         next: Function,
         id: Number
     ) => {
-        let image = null;
+        let temperature = null;
         try {
-            image = await Temperature.findById(id);
+            temperature = await Temperature.findById(id);
         } catch (err) {
             return next(createError(500, err));
         }
-        if (image === null) {
+        if (temperature === null) {
             return next(createError(404));
         }
-        res.locals.requestedImage = image;
+        res.locals.requestedTemperature = temperature;
         next();
     }
 );
@@ -34,7 +34,7 @@ router.get("/", async (req: express.Request, res: express.Response) => {
 
 // Get individual temperature
 router.get("/:id", (req: express.Request, res: express.Response) => {
-    res.status(200).json(res.locals.requestedImage);
+    res.status(200).json(res.locals.requestedTemperature);
 });
 
 // Delete existing temperature

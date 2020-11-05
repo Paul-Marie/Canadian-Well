@@ -3,6 +3,7 @@ import * as bodyParser from 'body-parser';
 import * as morgan from 'morgan';
 import * as cors from 'cors';
 
+import current from "./routes/current";
 import temperature from "./routes/temperature";
 import renderError from "./middleware/error";
 
@@ -24,4 +25,5 @@ app.use(morgan("dev"));
 app.use(express.static("public"));
 
 app.use("/temperatures", temperature);
+app.use("/current", current);
 app.use(renderError);
