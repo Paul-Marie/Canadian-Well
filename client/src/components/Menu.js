@@ -1,9 +1,6 @@
 import React, { memo, useState } from "react";
 import md5 from "md5";
-import {
-  SearchIcon,
-  MenuIcon
-} from "../utils/Icons";
+import { SearchIcon, MenuIcon } from "../utils/Icons";
 
 import "../styles/Menu.css";
 
@@ -23,18 +20,9 @@ const Menu = () => {
       <div className="overlay" style={overlayStyle} />
       <div className="menu" style={menuStyle}>
         <div className="menu__row">
-          <div className="menu__row-icon menu__row-icon--search">
-            <SearchIcon className="menu__row-icon__svg" onClick={openMenu} />
-          </div>
-          <input
-            className="menu__input"
-            placeholder="Search..."
-          />
-        </div>
-        <div className="menu__row">
           <img
-            className="menu__row-icon menu__row-icon--avatar"
-            src={`https://www.gravatar.com/avatar/${md5("chalotte.bettinelli@laposte.net")}?s=200&d=identicon`}
+            className="menu--logo"
+            src="/logo.png"
             alt="user"
             onClick={openMenu}
           />

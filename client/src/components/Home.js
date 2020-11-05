@@ -6,7 +6,6 @@ import Loader from "./../utils/Loader";
 import "../styles/Home.css";
 
 const Home = () => {
-  const [temperatures, setTemperatures] = useState(undefined);
   const [current, updateCurrent] = useState(undefined);
   const [data, setData] = useState(undefined);
 
@@ -14,13 +13,12 @@ const Home = () => {
     window.scrollTo(0, 0);
     (async () => {
       const result = await fetchAllTemperatures();
-      const ids = result.data.reduce((final, item) =>
-        final.includes(item.id) ? final : [ ...final, item.id ],
-      []).sort();
-      setTemperatures(result);
+      const ids = result.data.reduce((final, item) => (
+        final.includes(item.id) ? final : [ ...final, item.id ]
+      ), []).sort();
       const colors = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
       setData({
-        labels: result.data.reduce((final, item) =>(
+        labels: result.data.reduce((final, item) => (
           final.includes(item.date)
             ? final
             : [ ...final, item.date ]
@@ -32,7 +30,16 @@ const Home = () => {
             (elem) => elem.id === id).map(
               (elem) => elem.value),
           borderColor: colors[id - 1],
-            borderWidth: 1
+          borderWidth: 1,
+          lineTension: 0.1,
+          borderCapStyle: 'butt',
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
         }))
       });
     })();
@@ -44,17 +51,32 @@ const Home = () => {
       console.log(result);
       updateCurrent(result);
     })();
-  }, [temperatures]);
+  }, [data]);
 
   return (
     <>
+      <div className="title">
+        <div className="title--text">
+          Puits Canadien Meximieux
+        </div>
+      </div>
       <div className="current-time">
-        {(temperatures) ? (
-          <>
-          </>
+        {(current) ? (
+          <div className="current-time__container">
+            {current.data[0].sensors.map((elem) => (
+              <div className="current-time-container__item">
+                <div className="current-time-container__item--title">
+                  Sonde {elem.id}
+                </div>
+                <div className="current-time-container__item--value">
+                  {elem.value}°C
+                </div>
+              </div>
+            ))}
+          </div>
         ) : (
           <Loader />
-        )};
+        )}
       </div>
       <div className="graph">
         {(data) ? (
@@ -65,7 +87,7 @@ const Home = () => {
           </>
         ) : (
         <Loader />
-        )};
+        )}
       </div>
     </>
   );
