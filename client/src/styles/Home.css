@@ -1,0 +1,120 @@
+.artist_header {
+  margin-top: 10px;
+  display: flex;
+}
+
+.artist_header-cover {
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.artist_header-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 32px;
+  margin-left: 20px;
+}
+
+.artist_content {
+  grid-template-columns: 200px auto;
+  grid-template-rows: 50px auto;
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+.artist_content_album-piece {
+  display: inline-block;
+  position: relative;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.artist_content_album_piece-band {
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  bottom: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.artist_content_album_piece_band-title {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 80%;
+  text-overflow: ellipsis;
+  position: absolute;
+  color: #fff;
+  bottom: 5px;
+  left: 2px;
+  font-weight: bold;
+}
+
+.artist_content_album_piece_band-play {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 5px;
+  top: 5px;
+}
+
+.artist_content_album_piece-image {
+  position: relative;
+  align-items: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.artist_content_album_piece_image-img {
+  width: 200px;
+  height: 200px;
+}
+
+@media only screen and (max-width: 700px) {
+  .artist_header {
+    flex-direction: column;
+  }
+
+  .artist_header-name {
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .artist_header-cover {
+    width: 100%;
+    padding: 10px 10px;
+    box-sizing: border-box;
+  }
+
+  .artist_content-album {
+    text-align: center;
+  }
+
+  .artist_content-info {
+    text-align: center;
+  }
+
+  .artist_content_album_piece_image-img {
+    width: 125px;
+    height: 125px;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .artist_content {
+    display: grid;
+    padding: 0;
+  }
+
+  .artist_header-cover {
+    width: 200px;
+    height: 200px;
+  }
+
+  .artist_content-album {
+    margin-left: 20px;
+  }
+}
