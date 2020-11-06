@@ -33,7 +33,7 @@ router.post("/", async (req: express.Request, res: express.Response) => {
     try {
         await Temperature.create(
             req.body.sensors.map((sensor) => ({
-                date: new Date(),
+                date: (sensor.date) ? new Date(sensor.date) : new Date(),
                 id: sensor.id,
                 value: sensor.value
             })));
