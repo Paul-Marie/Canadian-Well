@@ -5,8 +5,8 @@ import Loader from "./../utils/Loader";
 
 import "../styles/Home.css";
 
-const colors = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
-const names = ["Salon", "Garage", "Exterieur", "Sol (1.5m)"];
+const colors = ['Red', 'Blue', 'Purple', 'Green', 'Orange', 'Yellow'];
+const names = ["Salon", "Garage", "Exterieure", "Sol (1.5m)"];
 
 const Home = () => {
   const [current, updateCurrent] = useState(undefined);
