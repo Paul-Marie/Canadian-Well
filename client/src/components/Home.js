@@ -6,7 +6,7 @@ import Loader from "./../utils/Loader";
 import "../styles/Home.css";
 
 const colors = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
-const names = ["Ambiante", "PC", "Exterieur", "Sol"];
+const names = ["Salon", "Garage", "Exterieur", "Sol (1.5m)"];
 
 const Home = () => {
   const [current, updateCurrent] = useState(undefined);
