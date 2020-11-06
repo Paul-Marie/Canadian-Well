@@ -20,7 +20,7 @@ const Menu = () => {
       <div className="overlay" style={overlayStyle} />
       <div className="menu" style={menuStyle}>
         <div className="menu__row">
-          <a href="http://localhost:3001/temperatures">
+          <a href="http://146.59.239.192:3001/temperatures">
             <img
               className="menu--logo"
               src="/logo.png"

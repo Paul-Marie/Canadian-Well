@@ -5,6 +5,9 @@ import Loader from "./../utils/Loader";
 
 import "../styles/Home.css";
 
+const colors = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+const names = ["Ambiante", "PC", "Exterieur", "Sol"];
+
 const Home = () => {
   const [current, updateCurrent] = useState(undefined);
   const [data, setData] = useState(undefined);
@@ -17,7 +20,6 @@ const Home = () => {
       const ids = result.data.reduce((final, item) => (
         final.includes(item.id) ? final : [ ...final, item.id ]
       ), []).sort();
-      const colors = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
       setData({
         labels: result.data.reduce((final, item) => (
           final.includes(item.date)
@@ -25,13 +27,13 @@ const Home = () => {
             : [ ...final, item.date ]
         ), []).sort(),
         datasets: ids.map((id) => ({
-          label: id,
+          label: names[id - 1],
           fill: false,
           data: result.data.filter(
             (elem) => elem.id === id).map(
               (elem) => elem.value),
           borderColor: colors[id - 1],
-          borderWidth: 1,
+          borderWidth: 3,
           lineTension: 0.1,
           borderCapStyle: 'butt',
           borderDashOffset: 0.0,
@@ -56,7 +58,8 @@ const Home = () => {
   useEffect(() => {
     (async () => {
       const result = await fetchCurrentTemperature();
-      updateCurrent(result);
+      console.log(result.data[0])
+      updateCurrent(result.data[0]);
     })();
   }, [time]);
 
@@ -70,12 +73,16 @@ const Home = () => {
       <div className="current-time">
         {(current) ? (
           <div className="current-time__container">
-            {current.data[0].sensors.map((elem, key) => (
+            {current.sensors.map((elem, key) => (
               <div
                 className="current-time-container__item"
                 key={key}>
                 <div className="current-time-container__item--title">
-                  Sonde {elem.id}
+                  {(elem.id > current.sensors.length) ? (
+                    `Sonde ${elem.id}`
+                  ) : (
+                  `Temperature ${names[elem.id - 1]}`
+                  )}
                 </div>
                 <div className="current-time-container__item--value">
                   {elem.value}°C
