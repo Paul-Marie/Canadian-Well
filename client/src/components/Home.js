@@ -5,7 +5,7 @@ import Loader from "./../utils/Loader";
 
 import "../styles/Home.css";
 
-const colors = ['Purple', 'Blue', 'Yellow', 'Green', 'Orange', 'Red'];
+const colors = ['Red', 'Blue', 'Purple', 'Green', 'Orange', 'Yellow'];
 const names = ["Salon", "Garage", "Exterieure", "Sol (1.5m)"];
 
 const Home = () => {
